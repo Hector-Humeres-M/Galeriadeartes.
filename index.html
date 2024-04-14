@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Arte</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+        section {
+            padding: 20px;
+        }
+
+        /* Estilos específicos */
+        #inicio {
+            background-color: #f9f9f9;
+        }
+        #galeria {
+            background-color: #e0e0e0;
+        }
+        #contacto {
+            background-color: #f0f0f0;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script>
+        // Oculta todas las secciones excepto la primera (inicio) al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            const secciones = document.querySelectorAll('section');
+            secciones.forEach((seccion, index) => {
+                if (index !== 0) {
+                    seccion.style.display = 'none';
+                }
+            });
+
+            // Agrega un evento de clic a cada enlace
+            const enlaces = document.querySelectorAll('nav ul li a');
+            enlaces.forEach(enlace => {
+                enlace.addEventListener('click', e => {
+                    e.preventDefault(); // Evita que el enlace cambie la URL
+
+                    // Oculta todas las secciones
+                    secciones.forEach(seccion => {
+                        seccion.style.display = 'none';
+                    });
+
+                    // Muestra la sección correspondiente al enlace seleccionado
+                    const targetId = enlace.getAttribute('href').substring(1);
+                    const targetSeccion = document.getElementById(targetId);
+                    targetSeccion.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<header>
+    <h1>Galería de Arte</h1>
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="inicio">
+    <h2>Bienvenidos a nuestra Galería de Arte</h2>
+    <p>Explora obras de artistas talentosos y encuentra inspiración.</p>
+</section>
+
+<section id="galeria">
+    <h2>Galería de Fotos</h2>
+    <div class="gallery">
+        <img src="moto2..png" alt="Obra de arte 1">
+        <img src="moto3..png" alt="Obra de arte 2">
+        <!-- Agrega más imágenes aquí -->
+    </div>
+</section>
+
+<section id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Tienes preguntas o comentarios? Escríbenos a <a href="mailto:info@galeriadearte.com">info@galeriadearte.com</a>.</p>
+</section>
+</body>
+</html>
+
